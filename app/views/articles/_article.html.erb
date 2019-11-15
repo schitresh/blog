@@ -1,0 +1,23 @@
+<div class="col-xs-8 col-xs-offset-2">
+  <% allarticles.each do |article| %>
+    <div class="well">
+      <h4 class="center" style="margin-top:-0.3em"> <b> <%= link_to article.title, article_path(article) %> </b> </h4>
+      <div> <%= truncate(article.description, length: 100) %> </div>
+      <br>
+      <div>
+        <small>Created by: <%= article.user.username if article.user %>,
+        <%= time_ago_in_words(article.created_at) %> ago,
+        last_updated: <%= time_ago_in_words(article.updated_at) %></small>
+      </div>
+      <div class="article-actions center">
+        <%= link_to 'View Article', article_path(article), class: "btn btn-xs btn-success" %>
+        <% if logged_in? && (current_user == article.user || current_user.admin?) %>
+          <td><%= link_to 'Edit Article', edit_article_path(article), class: "btn btn-xs btn-primary" %>
+          <td><%= link_to 'Delete Article', article_path(article), class: "btn btn-xs btn-danger",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+    </div>
+  <% end%>
+</div>

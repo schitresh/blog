@@ -1,0 +1,26 @@
+<% if @user.errors.any? %>
+  Errors occured:
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="col-md-4 col-md-offset-4">
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control", placeholder: "Enter your user name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control", placeholder: "Enter your email address" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control", placeholder: "Enter your password" %>
+    </div>
+    <%= f.submit @user.new_record? ? "Sign Up" : "Update Account", class: "btn btn-default" %>
+  <% end %>
+</div>
