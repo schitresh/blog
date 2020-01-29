@@ -74,7 +74,7 @@ footer ul {
 h1, h2 {
   text-align: center;
   font-weight: bold;
-  padding-bottom: 1em; 
+  padding-bottom: 0.2em; 
 }
 
 .article-actions {
@@ -84,5 +84,27 @@ h1, h2 {
 
 .listing{
   list-style: none;
-  padding: 1em;
+  padding: 0.1em;
+}
+
+.title {
+  // color: darkblue;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.badge {
+  background: hsl(29, 42%, 48%);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  // font-weight: bold;
+  // padding: auto -1em auto 0.5em;
+}
+
+.badge > a {
+  color: white
+}
+
+.input_checkbox {
+  width: auto !important;
 }

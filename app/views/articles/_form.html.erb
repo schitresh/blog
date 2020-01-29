@@ -22,8 +22,18 @@
       </div>
     </div>
     <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+            <%= cb.label(class: "checkbox-inline input-checkbox") {
+                 cb.check_box(class: "checkbox") + cb.text.humanize } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit class: "btn btn-primary"%>
+        <%= f.submit class: "btn btn-primary" %>
       </div>
     </div>
     <% end %>

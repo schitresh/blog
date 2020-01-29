@@ -4,6 +4,9 @@
       <h4 class="center" style="margin-top:-0.3em"> <b> <%= link_to article.title, article_path(article) %> </b> </h4>
       <div> <%= truncate(article.description, length: 100) %> </div>
       <br>
+      <% if article.categories.any? %>
+        <small> <p> Categories: <%= render article.categories %> </p> </small>
+      <% end %>
       <div>
         <small>Created by: <%= article.user.username if article.user %>,
         <%= time_ago_in_words(article.created_at) %> ago,

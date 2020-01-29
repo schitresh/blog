@@ -8,7 +8,14 @@
 <div class="row">
   <h4 class="col-xs-2" align="right"> <strong> Description: </strong> </h4>
   <div class="well col-xs-7">
-  <%= simple_format(@article.description) %>
+    <%= simple_format(@article.description) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2" align="right"> <strong> Categories: </strong> </div>
+  <div class="col-xs-8">
+    <p> <%= render @article.categories %> </p>
   </div>
 </div>
 

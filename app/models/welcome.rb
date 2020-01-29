@@ -1,2 +1,0 @@
-class Welcome < ApplicationRecord
-end
