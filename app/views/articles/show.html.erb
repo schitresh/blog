@@ -15,7 +15,11 @@
 <div class="row">
   <div class="col-xs-2" align="right"> <strong> Categories: </strong> </div>
   <div class="col-xs-8">
-    <p> <%= render @article.categories %> </p>
+  <p>
+    <% if @article.categories.any? %>
+      <p>Categories: <%= render @article.categories %></p>
+    <% end %>
+  </p>
   </div>
 </div>
 
