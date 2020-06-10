@@ -1,43 +1,45 @@
-<div class="container col-xs-10 col-xs-offset-2">
+<div class="container col-md-10 col-md-offset-2">
 <div class="row">
-  <div class="col-xs-offset-4">
+  <div class="col-md-offset-4">
     <h3 style="float:middle;"> <b> <%= @article.title %> </b> </h3>
   </div>
 </div>
 
 <div class="row">
-  <h4 class="col-xs-2" align="right"> <strong> Description: </strong> </h4>
-  <div class="well col-xs-7">
+  <h4 class="col-md-2"> <strong> Description: </strong> </h4>
+  <div class="well col-md-7">
     <%= simple_format(@article.description) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-2" align="right"> <strong> Categories: </strong> </div>
-  <div class="col-xs-8">
+  <div class="col-md-2"> <strong> Categories: </strong> </div>
+  <div class="col-md-8">
   <p>
     <% if @article.categories.any? %>
-      <p>Categories: <%= render @article.categories %></p>
+      <p><%= render @article.categories %></p>
     <% end %>
   </p>
   </div>
 </div>
 
-<div class="row col-xs-10" align="center">
+<div class="row col-md-10">
   <% if @article.user %>
     <div class="row">
-      <b>Created by:</b> <br>
-      <div class="col-xs-6" align="right">
+      <div class="col-md-2">
+        <b>Created by:</b>
+      </div>
+      <div class="col-md-2">
         <small> <%= link_to gravatar_for(@article.user), user_path(@article.user) %> </small>
       </div>
-      <div class="col-xs-4" align="left">
+      <div class="col-md-4">
         <%= link_to @article.user.username, user_path(@article.user) %> <br>
         <small> <%= pluralize(@article.user.articles.count, 'article') if @article.user.articles %> </small>
       </div>
     </div>
   <% end %>
-
-  <div class="article-actions">
+  <br>
+  <div class="article-actions center">
     <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
       <%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-sm btn-primary" %>
       <%= link_to 'Delete Article', article_path(@article), class: "btn btn-sm btn-danger",
